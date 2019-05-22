@@ -1,4 +1,4 @@
-module Graphql
+module GraphQL
   class CacheContext::Store
     attr_reader :context
 

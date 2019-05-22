@@ -4,7 +4,7 @@ require 'graphql/cache_context'
 
 Gem::Specification.new do |spec|
   spec.name          = "graphql-cache-context"
-  spec.version       = Graphql::CacheContext::VERSION
+  spec.version       = GraphQL::CacheContext::VERSION
   spec.authors       = ["Alex Klimenkov"]
   spec.email         = ["alex.klimenkov@craft.co", "alex.klimenkovv@gmail.com"]
 
