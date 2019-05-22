@@ -16,7 +16,7 @@ If you want to use cache object you have to create your own resolver
 ```ruby
 
   resolve ->(company, _arg, _ctx, cache) {
-    cache.fetch(:twitter_datapoint) { ServicesSome.call }
+    cache.fetch(:cache_key) { ServicesSome.call }
   }
 
 ```
