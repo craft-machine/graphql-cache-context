@@ -1,10 +1,10 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'graphql/cache_context'
+require 'cache_context/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "graphql-cache-context"
-  spec.version       = GraphQL::CacheContext::VERSION
+  spec.name          = "cache-context"
+  spec.version       = CacheContext::VERSION
   spec.authors       = ["Alex Klimenkov"]
   spec.email         = ["alex.klimenkov@craft.co", "alex.klimenkovv@gmail.com"]
 
