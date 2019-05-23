@@ -14,7 +14,7 @@ module GraphQL
 
         # it means we want to get cache object
         if old_resolve_proc.is_a?(Proc) && old_resolve_proc.arity == 4
-          cache = CacheContext::Store.new(context)
+          cache = GraphQL::CacheContext::Store.new(context)
           old_resolve_proc.call(object, arguments, context, cache)
         else
           old_resolve_proc.call(object, arguments, context)
