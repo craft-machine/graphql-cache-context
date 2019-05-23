@@ -1,8 +1,8 @@
 require 'graphql/cache_context/version'
 require 'graphql/cache_context/store'
 
-module GraphQL
-  class CacheContext
+# module GraphQL
+  class GraphQL::CacheContext
     def use(schema_definition)
       schema_definition.instrument(:field, self)
     end
@@ -24,4 +24,4 @@ module GraphQL
       field.redefine { resolve(new_resolve_proc) }
     end
   end
-end
+# end
