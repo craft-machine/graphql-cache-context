@@ -11,7 +11,6 @@ module GraphQL
       old_resolve_proc = field.resolve_proc
 
       new_resolve_proc = ->(object, arguments, context) do
-
         # it means we want to get cache object
         arity = old_resolve_proc.respond_to?(:arity) ? old_resolve_proc.arity : old_resolve_proc.method(:call).arity
         if arity == 4
