@@ -3,6 +3,9 @@ require 'graphql/cache_context/store'
 
 module GraphQL
   class CacheContext
+    DEFAULT_ARITY_FOR_GRAPHQL = 3
+    ARITY_FOR_GRAPHQL_WITH_CACHE = 4
+
     def use(schema_definition)
       schema_definition.instrument(:field, self)
     end
@@ -12,8 +15,7 @@ module GraphQL
 
       new_resolve_proc = ->(object, arguments, context) do
         # it means we want to get cache object
-        arity = old_resolve_proc.respond_to?(:arity) ? old_resolve_proc.arity : old_resolve_proc.method(:call).arity
-        if arity == 4
+        if method_arity(old_resolve_proc) == ARITY_FOR_GRAPHQL_WITH_CACHE
           cache = GraphQL::CacheContext::Store.new(context)
           old_resolve_proc.call(object, arguments, context, cache)
         else
@@ -22,6 +24,15 @@ module GraphQL
       end
 
       field.redefine { resolve(new_resolve_proc) }
+    end
+
+    private
+
+    def method_arity(field_resolve)
+      return field_resolve.arity if field_resolve.respond_to?(:arity)
+      return field_resolve.method(:call).arity if field_resolve.respond_to?(:call)
+
+      DEFAULT_ARITY_FOR_GRAPHQL
     end
   end
 end
