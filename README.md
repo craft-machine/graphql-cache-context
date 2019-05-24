@@ -7,6 +7,9 @@ As results are saved to the context the lib useful for saving response once per 
 Please add
 
 ```ruby
+  require 'graphql/cache_context' # at the top
+
+  # after schema
   use Graphql::CacheContext.new
 ```
 
